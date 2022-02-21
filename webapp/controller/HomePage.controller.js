@@ -155,6 +155,7 @@ sap.ui.define([
 				this.byId("materialId").setValue(oSelectedItem.getDescription());
 				this.byId("materialId").setSelectedKey(oSelectedItem.getTitle());
 
+				
 				// Display footer to user ---------------------------------------------------------
 				this._showFooter();
 			},
