@@ -1,0 +1,110 @@
+<mvc:View
+			controllerName="traccibilitanmp.traccibilitatesutto.controller.HomePage"
+			xmlns="sap.m"
+			xmlns:f="sap.f"
+			xmlns:ndc="sap.ndc"
+			xmlns:core="sap.ui.core"
+			xmlns:mvc="sap.ui.core.mvc"
+			xmlns:layout="sap.ui.layout"
+			xmlns:form="sap.ui.layout.form"
+			height="100%">
+
+	<f:DynamicPage 	id="dynamicPageId"  
+					headerExpanded="false"  
+					toggleHeaderOnTitleClick="false"
+					showFooter="false">
+	
+	<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>title}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+	<!-- DynamicPage Header -->
+		<f:header>
+		</f:header>
+
+	<!-- DynamicPage Content-->
+		<f:content>
+			<form:SimpleForm 	id="SimpleFormToolbar"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="4"
+								labelSpanL="3"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="4"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="2"
+								columnsL="1"
+								columnsM="1"
+								singleContainerFullSize="false"
+								ariaLabelledBy="Title1" >
+			<form:toolbar>
+				<Toolbar ariaLabelledBy="formTitleId">
+					<Title id="formTitleId" text="{i18n>title}"/>
+				</Toolbar>
+			</form:toolbar>
+			<form:content>
+
+				<!-- Work Center / Centro di lavoro -->
+				<Label text="{i18n>workCenterLabel}" required="true"/>
+				<Input id="workCenterId" 
+					   change="onInputChange" 
+					   showSuggestion="true"
+					   showValueHelp="true"
+					   valueHelpRequest=".workCenterValueHelpRequest"
+					   suggestionItems="{workCenter>/}">
+					<suggestionItems>
+						<core:Item text="{workCenter>Descr}" key="{workCenter>code}"/>
+					</suggestionItems>
+				</Input>
+
+				<!-- Material / Tessuto -->
+				<Label text="{i18n>materialLabel}" required="true"/>
+				<Input id="materialId" 
+					   change="onInputChange"
+					   showSuggestion="true"
+					   showValueHelp="true"
+					   valueHelpRequest=".tessutoValueHelpRequest"
+					   suggestionItems="{tessuto>/}">
+					<suggestionItems>
+						<core:Item text="{tessuto>Descr}" key="{tessuto>code}"/>
+					</suggestionItems>
+				</Input>
+
+				<!-- QR code scaner / Partita  -->
+				<Label text="{i18n>qrCodeLAbel}" required="true"/>
+				<Input id="partitaId" change="onInputChange" >
+					<layoutData>
+						<layout:GridData span="XL4 L4 M4 S12" /> 
+				  </layoutData>
+				</Input>
+				<ndc:BarcodeScannerButton id="partitaBarcodeScannerButton"
+										  scanSuccess="onScanSuccess"
+										  scanFail="onScanError"
+										  inputLiveUpdate="onScanLiveupdate"
+										  dialogTitle="Barcode Scanner" />
+
+			</form:content>
+		</form:SimpleForm>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://cancel" text="{i18n>cancelBtn}" type="Reject" press="onCancelPress" />
+				<Button icon="sap-icon://save" text="{i18n>saveBtn}" type="Emphasized" press="onSavePress" />
+			</Toolbar>
+		</f:footer>
+
+	</f:DynamicPage>
+
+</mvc:View>

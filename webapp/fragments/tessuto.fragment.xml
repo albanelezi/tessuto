@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="tessutoSelectDialogId"
+		title="Tessuto"
+		items="{workCenter>/}"
+		search=".onValueHelptessutoSearch"
+		confirm=".onValueHelptessutoClose"
+		cancel=".onValueHelptessutoClose">
+		<StandardListItem
+			icon="sap-icon://commission-check"
+			title="{workCenter>code}"
+            iconDensityAware="true"
+			iconInset="false"
+            iconActive="true"
+            key="{workCenter>code}"
+			description="{workCenter>Descr}" />
+	</SelectDialog>
+</core:FragmentDefinition>

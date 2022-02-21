@@ -1,0 +1,12 @@
+{
+    "base": "./dist",
+    "conn_usestrictssl" : false,
+    "conn_server": "http://srvvlxdev.vulcaflex.locale:8000/",  
+    "conn_client" : "100",  
+    "conn_user": "develop",    
+    "conn_password": "Vulca2021",
+    "abap_package": "Z001",
+    "abap_bsp": "ZTRAC_TESSUTO",
+    "abap_bsp_text": "TRACCIBILITA",
+    "abap_transport" : "DEVK914025"
+}
