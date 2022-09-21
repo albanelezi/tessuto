@@ -13,7 +13,7 @@
     "ach": "ach",
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/iwfnd/CATALOGSERVICE",
+        "uri": "/sap/opu/odata/sap/ZODATA_TRACCIA_TESSUTO_SRV",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",

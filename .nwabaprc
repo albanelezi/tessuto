@@ -1,12 +1,12 @@
 {
     "base": "./dist",
     "conn_usestrictssl" : false,
-    "conn_server": "http://srvvlxdev.vulcaflex.locale:8000/",  
-    "conn_client" : "100",  
-    "conn_user": "develop",    
-    "conn_password": "Vulca2021",
-    "abap_package": "Z001",
+    "conn_server": "http://srvvlxfid.vulcaflex.locale:8040/",  
+    "conn_client" : "300",  
+    "conn_user": "VXFIORI",    
+    "conn_password": "Vulca2022x",
+    "abap_package": "ZTRACCIABILITA",
     "abap_bsp": "ZTRAC_TESSUTO",
     "abap_bsp_text": "TRACCIBILITA",
-    "abap_transport" : "DEVK914025"
+    "abap_transport" : "FIDK900048"
 }

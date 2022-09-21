@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="orderSelectDialogId"
+		title="{i18n>orderLabel}"
+		items="{order>/}"
+		search=".onValueHelpOrderSearch"
+		confirm=".onValueHelpOrderClose"
+		cancel=".onValueHelpOrderClose">
+		<StandardListItem
+			icon="sap-icon://sales-order-item"
+			title="{order>AUFNR}"
+            iconDensityAware="true"
+			iconInset="false"
+            iconActive="true"
+            key="{order>AUFNR}"
+			description="{order>DESCR_AUFNR}" />
+	</SelectDialog>
+</core:FragmentDefinition>

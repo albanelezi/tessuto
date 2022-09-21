@@ -8,7 +8,7 @@ sap.ui.define([
 	return UIComponent.extend("traccibilitanmp.traccibilitatesutto.Component", {
 
 		metadata: {
-			manifest: "json"
+			manifest: "json",
 		},
 
 		/**

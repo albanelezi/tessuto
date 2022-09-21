@@ -2,17 +2,17 @@
 	<SelectDialog
 		id="tessutoSelectDialogId"
 		title="Tessuto"
-		items="{workCenter>/}"
+		items="{tessuto>/}"
 		search=".onValueHelptessutoSearch"
 		confirm=".onValueHelptessutoClose"
 		cancel=".onValueHelptessutoClose">
 		<StandardListItem
-			icon="sap-icon://commission-check"
-			title="{workCenter>code}"
+			icon="sap-icon://product"
+			title="{tessuto>MATNR}"
             iconDensityAware="true"
 			iconInset="false"
             iconActive="true"
-            key="{workCenter>code}"
-			description="{workCenter>Descr}" />
+            key="{tessuto>MATNR}"
+			description="{tessuto>MAKTX}" />
 	</SelectDialog>
 </core:FragmentDefinition>

@@ -1,18 +1,18 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<SelectDialog
 		id="workCenterSelectDialogId"
-		title="Products"
+		title="Centro di Lavoro"
 		items="{workCenter>/}"
 		search=".onValueHelpWorkCenterSearch"
 		confirm=".onValueHelpWorkCenterClose"
 		cancel=".onValueHelpWorkCenterClose">
 		<StandardListItem
 			icon="sap-icon://commission-check"
-			title="{workCenter>code}"
+			title="{workCenter>ARBPL}"
             iconDensityAware="true"
 			iconInset="false"
             iconActive="true"
-            key="{workCenter>code}"
-			description="{workCenter>Descr}" />
+            key="{workCenter>ARBPL}"
+			description="{workCenter>DESCR_ARBPL}" />
 	</SelectDialog>
 </core:FragmentDefinition>

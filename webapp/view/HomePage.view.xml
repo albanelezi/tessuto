@@ -1,105 +1,82 @@
-<mvc:View
-			controllerName="traccibilitanmp.traccibilitatesutto.controller.HomePage"
-			xmlns="sap.m"
-			xmlns:f="sap.f"
-			xmlns:ndc="sap.ndc"
-			xmlns:core="sap.ui.core"
-			xmlns:mvc="sap.ui.core.mvc"
-			xmlns:layout="sap.ui.layout"
-			xmlns:form="sap.ui.layout.form"
-			height="100%">
+<mvc:View controllerName="traccibilitanmp.traccibilitatesutto.controller.HomePage" xmlns="sap.m" xmlns:f="sap.f" xmlns:ndc="sap.ndc" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" height="100%">
 
-	<f:DynamicPage 	id="dynamicPageId"  
-					headerExpanded="false"  
-					toggleHeaderOnTitleClick="false"
-					showFooter="false">
-	
-	<!-- DynamicPage Title -->
+	<f:DynamicPage id="dynamicPageId" headerExpanded="false" toggleHeaderOnTitleClick="false" showFooter="false" busy="{viewModel>/busy}">
+
+		<!-- DynamicPage Title -->
 		<f:title>
 			<f:DynamicPageTitle>
 				<f:heading>
-					<Title text="{i18n>title}"/>
+					<Title text="{i18n>title}" />
 				</f:heading>
 			</f:DynamicPageTitle>
 		</f:title>
 
-	<!-- DynamicPage Header -->
-		<f:header>
-		</f:header>
+		<!-- DynamicPage Header -->
+		<f:header></f:header>
 
-	<!-- DynamicPage Content-->
+		<!-- DynamicPage Content-->
 		<f:content>
-			<form:SimpleForm 	id="SimpleFormToolbar"
-								editable="true"
-								layout="ResponsiveGridLayout"
-								labelSpanXL="4"
-								labelSpanL="3"
-								labelSpanM="4"
-								labelSpanS="12"
-								adjustLabelSpan="false"
-								emptySpanXL="0"
-								emptySpanL="4"
-								emptySpanM="0"
-								emptySpanS="0"
-								columnsXL="2"
-								columnsL="1"
-								columnsM="1"
-								singleContainerFullSize="false"
-								ariaLabelledBy="Title1" >
-			<form:toolbar>
-				<Toolbar ariaLabelledBy="formTitleId">
-					<Title id="formTitleId" text="{i18n>title}"/>
-				</Toolbar>
-			</form:toolbar>
-			<form:content>
+			<form:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" ariaLabelledBy="Title1">
+				<form:toolbar>
+					<Toolbar ariaLabelledBy="formTitleId">
+						<Title id="formTitleId" text="{i18n>title}" />
+					</Toolbar>
+				</form:toolbar>
+				<form:content>
 
-				<!-- Work Center / Centro di lavoro -->
-				<Label text="{i18n>workCenterLabel}" required="true"/>
-				<Input id="workCenterId" 
-					   change="onInputChange" 
-					   showSuggestion="true"
-					   showValueHelp="true"
-					   valueHelpRequest=".workCenterValueHelpRequest"
-					   suggestionItems="{workCenter>/}">
-					<suggestionItems>
-						<core:Item text="{workCenter>Descr}" key="{workCenter>code}"/>
-					</suggestionItems>
-				</Input>
+					<!-- Order / Ordine -->
+					<Label text="{i18n>orderLabel}" required="true" />
+					<Input id="field1" change="onOrderChange" showSuggestion="true" showValueHelp="true" valueHelpRequest=".orderValueHelpRequest" suggestionItems="{order>/}">
+						<suggestionItems>
+							<core:Item text="{order>AUFNR} - {order>DESCR_AUFNR}" key="{order>AUFNR}" />
+						</suggestionItems>
+						<layoutData>
+							<layout:GridData span="XL4 L4 M4 S12" />
+						</layoutData>
+					</Input>
+					<Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field1" press="onBtnScanPress" />
 
-				<!-- Material / Tessuto -->
-				<Label text="{i18n>materialLabel}" required="true"/>
-				<Input id="materialId" 
-					   change="onInputChange"
-					   showSuggestion="true"
-					   showValueHelp="true"
-					   valueHelpRequest=".tessutoValueHelpRequest"
-					   suggestionItems="{tessuto>/}">
-					<suggestionItems>
-						<core:Item text="{tessuto>Descr}" key="{tessuto>code}"/>
-					</suggestionItems>
-				</Input>
+					<!-- Work Center / Centro di lavoro -->
+					<Label text="{i18n>workCenterLabel}" required="true" />
+					<Input id="field2" editable="false" change="onInputChange" showSuggestion="true" showValueHelp="true" valueHelpRequest=".workCenterValueHelpRequest" suggestionItems="{workCenter>/}">
+						<suggestionItems>
+							<core:Item text="{workCenter>ARBPL} - {workCenter>DESCR_ARBPL}" key="{workCenter>ARBPL}" />
+						</suggestionItems>
+						<layoutData>
+							<layout:GridData span="XL4 L4 M4 S12" />
+						</layoutData>
+					</Input>
+					<Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field2" press="onBtnScanPress" visible="false"/>
 
-				<!-- QR code scaner / Partita  -->
-				<Label text="{i18n>qrCodeLAbel}" required="true"/>
-				<Input id="partitaId" change="onInputChange" >
-					<layoutData>
-						<layout:GridData span="XL4 L4 M4 S12" /> 
-				  </layoutData>
-				</Input>
-				<ndc:BarcodeScannerButton id="partitaBarcodeScannerButton"
-										  scanSuccess="onScanSuccess"
-										  scanFail="onScanError"
-										  inputLiveUpdate="onScanLiveupdate"
-										  dialogTitle="Barcode Scanner" />
+					<!-- Material / Tessuto -->
+					<Label text="{i18n>materialLabel}" required="true" />
+					<Input id="field3"  showSuggestion="true" showValueHelp="true" valueHelpRequest=".tessutoValueHelpRequest" suggestionItems="{tessuto>/}">
+						<suggestionItems>
+							<core:Item text="{tessuto>MATNR} - {tessuto>MAKTX}" key="{tessuto>MATNR}" />
+						</suggestionItems>
+						<layoutData>
+							<layout:GridData span="XL4 L4 M4 S12" />
+						</layoutData>
+					</Input>
+					<Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field3" press="onBtnScanPress" />
 
-			</form:content>
-		</form:SimpleForm>
+					<!-- QR code scaner / Partita  -->
+					<Label text="{i18n>qrCodeLAbel}" required="true" />
+					<Input id="field4" change="onInputChange">
+						<layoutData>
+							<layout:GridData span="XL4 L4 M4 S12" />
+						</layoutData>
+					</Input>
+					<Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field4" press="onBtnScanPress"/>
+
+				</form:content>
+			</form:SimpleForm>
 		</f:content>
 
 		<!-- DynamicPage Footer -->
 		<f:footer>
 			<Toolbar>
-				<ToolbarSpacer/>
+				<ToolbarSpacer />
 				<Button icon="sap-icon://cancel" text="{i18n>cancelBtn}" type="Reject" press="onCancelPress" />
 				<Button icon="sap-icon://save" text="{i18n>saveBtn}" type="Emphasized" press="onSavePress" />
 			</Toolbar>
