@@ -22,7 +22,7 @@ sap.ui.define([
 					busy: false
 				});
 				this.getView().setModel(oModel, "viewModel");
-				// this.setFocus("field1");
+				this.setFocus("field1");
 				jQuery.sap.delayedCall(500, this, function () {
 					this.byId("field1").focus();
 				});
