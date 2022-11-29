@@ -8,5 +8,5 @@
     "abap_package": "ZTRACCIABILITA",
     "abap_bsp": "ZTRAC_TESSUTO",
     "abap_bsp_text": "TRACCIBILITA",
-    "abap_transport" : "FIDK900068"
+    "abap_transport" : "FIDK900084"
 }

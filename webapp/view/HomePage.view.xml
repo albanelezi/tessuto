@@ -50,7 +50,7 @@
 
 					<!-- Material / Tessuto -->
 					<Label text="{i18n>materialLabel}" required="true" />
-					<Input id="field3"  showSuggestion="true" showValueHelp="true" valueHelpRequest=".tessutoValueHelpRequest" suggestionItems="{tessuto>/}">
+					<Input id="field3" valueHelpRequest=".tessutoValueHelpRequest" suggestionItems="{tessuto>/}" editable="false">
 						<suggestionItems>
 							<core:Item text="{tessuto>MATNR} - {tessuto>MAKTX}" key="{tessuto>MATNR}" />
 						</suggestionItems>
@@ -58,7 +58,7 @@
 							<layout:GridData span="XL4 L4 M4 S12" />
 						</layoutData>
 					</Input>
-					<Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field3" press="onBtnScanPress" />
+					<!-- <Button width="25%" icon="sap-icon://bar-code" type="Emphasized" id="b_field3" press="onBtnScanPress" /> -->
 
 					<!-- QR code scaner / Partita  -->
 					<Label text="{i18n>qrCodeLAbel}" required="true" />

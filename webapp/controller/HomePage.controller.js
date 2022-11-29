@@ -64,14 +64,14 @@ sap.ui.define([
 					const oCheckFiled = oField3.substring(0, partitaLength).toUpperCase();
 
 					// if (oCheckFiled == oField2.toUpperCase()) {
-						MessageBox.confirm(oCancelConfirm, {
-							actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
-							onClose: function (sAction) {
-								if (sAction === 'OK') {
-									that.onMatnrChange(oField1, oField2, oField3, oField4, that);
-								}
+					MessageBox.confirm(oCancelConfirm, {
+						actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+						onClose: function (sAction) {
+							if (sAction === 'OK') {
+								that.onMatnrChange(oField1, oField2, oField3, oField4, that);
 							}
-						});
+						}
+					});
 					// } else {
 					// 	MessageBox.warning(oWarnNotEq);
 					// }
@@ -136,12 +136,14 @@ sap.ui.define([
 				const oViewModel = this.getView().getModel("viewModel");
 				const oMatnr = this.checkFieldSplit(this.byId("field3").getValue());//this.byId("materialId").getSelectedKey();
 				const oAufnr = this.checkFieldSplit(this.byId("field1").getValue());//this.byId("orderId").getSelectedKey();
+				const oPartita = this.byId("field4").getValue();//this.byId("partitaId").getValue();
 
 				if (!oAufnr) {
 					MessageBox.warning(this.getView().getModel("i18n").getResourceBundle().getText("no_aufnr"));
 				} else {
 					const oFilter = [new Filter("MATNR", "EQ", oMatnr),
-					new Filter("AUFNR", "EQ", oAufnr)];
+					                 new Filter("AUFNR", "EQ", oAufnr),
+									 new Filter("PARTITA", "EQ", oPartita)];
 
 					oViewModel.setProperty('/busy', true);
 					oModel.read("/Check_Matnr_to_OdPSet", {
@@ -466,6 +468,10 @@ sap.ui.define([
 				} else {
 					this.getView().byId(sId).setValue(sInput);
 				}
+
+				if (sId === 'field1') {
+					this.onOrderChange();
+				}
 				this.setFocus(sId);
 			},
 
@@ -509,7 +515,9 @@ sap.ui.define([
 							that.getView().byId("field2").setValue(oData.results[0].ARBPL);//Work Center
 							that.getView().byId("field3").setValue(oData.results[0].MATNR);//Work Center
 
-							that.setFocus("field3");//set the focus to the last field
+							if (oData.results[0].MATNR !== '') {
+								that.setFocus("field3");//set the focus to the last field
+							}
 						} else {
 							MessageBox.error("Non esiste Centro di lavoro che corrisponde al ordine selezionato");
 							that.getView().byId("field2").setValue("");//Work Center
